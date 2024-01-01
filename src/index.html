@@ -3,9 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Form Validation</title>
 </head>
 <body>
-  <div>Hello world</div>
+  
+  <form autocomplete="off" novalidate>
+    <div>
+      <div>
+        <label for="mail">Email:*</label>
+        <input type="email" id="mail" name="mail" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
+      </div>
+      <span id ="mail-error" class="error-msg hidden"></span>
+    </div>
+    
+    <div>
+      <div>
+        <label for="country">Country:</label>
+        <select name="country" id="country">
+          <option value="Turkey" selected>Turkey</option>
+          <option value="Germany">Germany</option>
+          <option value="Bulgaria">Bulgaria</option>
+          <option value="Greece">Greece</option>
+        </select>  
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <label for="zip">Zip Code:*</label>
+        <input type="text" id="zip" name="zip" required>
+      </div>
+      <span id ="zip-error" class="error-msg hidden"></span>
+    </div>
+
+    <div>
+      <div>
+        <label for="pass">Password:</label>
+        <input type="password" id="pass" name="pass">
+      </div>
+      <span class="error-msg hidden">Please provide password.</span>
+    </div>
+
+    <div>
+      <div>
+        <label for="confirm-pass">Confirm password:</label>
+        <input type="password" id="confirm-pass" name="confirm-Pass">
+      </div>
+      <span class="error-msg hidden">Password don't match.</span>
+    </div>
+
+    <div>
+      <button type="button" id="cancelBtn">Cancel</button>
+      <button type="submit" id="confirmBtn">Confirm</button>
+    </div>
+  </form>
+
 </body>
 </html>

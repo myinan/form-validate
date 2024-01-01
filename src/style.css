@@ -2,5 +2,62 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  background-color: gray;
+  font-size: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: max-content;
+  padding: 10px;
+  margin: 50px auto;
+}
+
+input {
+  border-radius: 5px;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+form div:last-child {
+  flex-direction: row;
+  gap: 5px;
+}
+
+form div:last-child button {
+  padding: 2px 5px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#cancelBtn:hover {
+  background-color: rgb(255, 109, 109);
+}
+
+#confirmBtn:hover {
+  background-color: rgb(110, 189, 110);
+}
+
+.error-msg {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 58ch;
+  font-size: 0.6rem;
+  background-color: red;
+  color: white;
+  padding: 2px;
+  border-radius: 5px;
+  margin-top: 3px;
+}
+
+.hidden {
+  display: none;
 }
