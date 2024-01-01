@@ -24,6 +24,7 @@ input {
 form > div {
   display: flex;
   flex-direction: column;
+  width: min-content;
 }
 
 form div:last-child {
@@ -38,6 +39,12 @@ form div:last-child button {
   border-radius: 5px;
 }
 
+form > div > div {
+  display: flex;
+  min-width: max-content;
+  gap: 5px;
+}
+
 #cancelBtn:hover {
   background-color: rgb(255, 109, 109);
 }
@@ -49,7 +56,6 @@ form div:last-child button {
 .error-msg {
   display: flex;
   flex-wrap: wrap;
-  max-width: 58ch;
   font-size: 0.6rem;
   background-color: red;
   color: white;

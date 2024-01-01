@@ -38,18 +38,18 @@
 
     <div>
       <div>
-        <label for="pass">Password:</label>
-        <input type="password" id="pass" name="pass">
+        <label for="pass">Password:*</label>
+        <input type="password" id="pass" name="pass" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" required>
       </div>
-      <span class="error-msg hidden">Please provide password.</span>
+      <span id="password-error" class="error-msg hidden"></span>
     </div>
 
     <div>
       <div>
-        <label for="confirm-pass">Confirm password:</label>
-        <input type="password" id="confirm-pass" name="confirm-Pass">
+        <label for="confirm-pass">Confirm password:*</label>
+        <input type="password" id="confirm-pass" name="confirm-pass" required>
       </div>
-      <span class="error-msg hidden">Password don't match.</span>
+      <span id="confirm-error" class="error-msg hidden">Password don't match.</span>
     </div>
 
     <div>

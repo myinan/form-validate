@@ -1,5 +1,6 @@
 import "./style.css";
 
+// Constraint validation for the e-mail field
 const email = document.querySelector("#mail");
 const errorEmail = document.querySelector("#mail-error");
 
@@ -15,6 +16,7 @@ email.addEventListener("focusout", (event) => {
   }
 });
 
+// Constraint validation for the zip number
 const zipValidationArr = [
   {
     country: "Turkey",
@@ -54,3 +56,37 @@ zip.addEventListener("focusout", (event) => {
     }
   });
 });
+
+//Constraint validation for password field
+const password = document.querySelector("#pass");
+const errorPassword = document.querySelector("#password-error");
+password.addEventListener("focus", handlePassword);
+password.addEventListener("focusout", handlePassword);
+
+function handlePassword(event) {
+  if (
+    event.target.validity.patternMismatch ||
+    event.target.validity.valueMissing
+  ) {
+    errorPassword.classList.remove("hidden");
+    errorPassword.innerText =
+      "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one number.";
+  } else {
+    errorPassword.classList.add("hidden");
+  }
+}
+
+//Constraint validation for password confirmation field
+const confirmPass = document.querySelector("#confirm-pass");
+const errorConfirm = document.querySelector("#confirm-error");
+confirmPass.addEventListener("focus", handleConfirm);
+confirmPass.addEventListener("focusout", handleConfirm);
+
+function handleConfirm(event) {
+  if (event.target.value !== password.value) {
+    errorConfirm.classList.remove("hidden");
+    errorConfirm.innerText = "Passwords do not match.";
+  } else {
+    errorConfirm.classList.add("hidden");
+  }
+}
