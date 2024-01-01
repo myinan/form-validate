@@ -6,13 +6,13 @@ const errorEmail = document.querySelector("#mail-error");
 
 email.addEventListener("focusout", (event) => {
   if (event.target.validity.patternMismatch) {
-    errorEmail.classList.remove("hidden");
+    errorEmail.classList.remove("display-none");
     errorEmail.innerText = "Please provide a valid e-mail address.";
   } else if (event.target.validity.valueMissing) {
-    errorEmail.classList.remove("hidden");
+    errorEmail.classList.remove("display-none");
     errorEmail.innerText = "Please provide an e-mail.";
   } else if (event.target.validity.valid) {
-    errorEmail.classList.add("hidden");
+    errorEmail.classList.add("display-none");
   }
 });
 
@@ -50,8 +50,8 @@ zip.addEventListener("focusout", (event) => {
     if (country.value === obj.country) {
       let regex = new RegExp(obj.regexp);
       regex.test(event.target.value)
-        ? errorZip.classList.add("hidden")
-        : (errorZip.classList.remove("hidden"),
+        ? errorZip.classList.add("display-none")
+        : (errorZip.classList.remove("display-none"),
           (errorZip.innerText = `Expected zip code pattern for ${obj.country}: ${obj.pattern}`));
     }
   });
@@ -68,11 +68,11 @@ function handlePassword(event) {
     event.target.validity.patternMismatch ||
     event.target.validity.valueMissing
   ) {
-    errorPassword.classList.remove("hidden");
+    errorPassword.classList.remove("display-none");
     errorPassword.innerText =
       "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one number.";
   } else {
-    errorPassword.classList.add("hidden");
+    errorPassword.classList.add("display-none");
   }
 }
 
@@ -84,9 +84,26 @@ confirmPass.addEventListener("focusout", handleConfirm);
 
 function handleConfirm(event) {
   if (event.target.value !== password.value) {
-    errorConfirm.classList.remove("hidden");
+    errorConfirm.classList.remove("display-none");
     errorConfirm.innerText = "Passwords do not match.";
   } else {
-    errorConfirm.classList.add("hidden");
+    errorConfirm.classList.add("display-none");
+  }
+}
+
+// Handle "confirm" button click
+const form = document.querySelector("form");
+const informDiv = document.querySelector("#inform");
+const confirmBtn = document.querySelector("#confirmBtn");
+confirmBtn.addEventListener("click", confirmClicked);
+
+function confirmClicked(event) {
+  event.preventDefault();
+  if (form.checkValidity()) {
+    informDiv.classList.add("visible");
+    informDiv.innerText = "Submission successful.";
+  } else if (!form.checkValidity()) {
+    informDiv.classList.add("visible");
+    informDiv.innerText = "Please fill out all of the fields correctly.";
   }
 }
